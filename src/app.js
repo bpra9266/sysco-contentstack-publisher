@@ -170,10 +170,10 @@ export const getAllEntriesFromContentTypes = async (callback) => {
 
 export const publishRecipesData = async () => {
   logger.info("Start recipe data inserting");
-  const otmmImages = JSON.parse(fs.readFileSync('./images_otmm.json', 'utf8'));
+  const otmmImages = JSON.parse(fs.readFileSync('./recipe_prod_otmm.json', 'utf8'));
   const requests = [];
   // read the data from the JSON file
-  const recipes = JSON.parse(fs.readFileSync('./recipes.json', 'utf8'));
+  const recipes = JSON.parse(fs.readFileSync('./recipes1.json', 'utf8'));
   for (const recipe of recipes) {
     const imageObj = otmmImages.filter(image => parseInt(image.wpid) === recipe.metadata.wpid)[0];
     const payload = {

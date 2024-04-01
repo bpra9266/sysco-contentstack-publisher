@@ -13010,13 +13010,7 @@
 				"heading": null,
 				"content": [
 					"During the holidays, shoppers may be frantically scrambling to pick up those final items on their gift lists, but they’re still making time to dine out. Since customers are willing to pay more for an exceptional dining experience not to mention the fact that so many flavors associated with the holidays are sweet (think eggnog, peppermint, and pumpkin everything)  the holidays are an excellent time to drive dessert sales.",
-					"Here are some tips from Vince Veneziano, Senior Vice President of Corporate Accounts at Lyons Magnus, and the Cheesecake Factory’s Tony Gressak, Vice President of Distributor Sales, and Alan Lee, executive pastry chef and Senior Manager of Bakery Research and Development, for turning desserts into sweet profits this holiday season.",
-					"In addition to serving classic holiday flavors, there’s ample opportunity to elevate premade desserts  and sales  by experimenting with sauces. A premade dessert serves as a blank canvas upon which operators can unleash some very profitable creativity.",
-					"Take a classic slice of cheesecake. It’s a simple delight. On the plate all by itself, however, it can look a little underwhelming. Simply adding a drizzle of strawberry, rich chocolate or salted caramel sauce can transform both the flavor and the visual appeal of the dessert. Whether pooled underneath, drizzled in a pattern on top, or served in a ramekin on the side, a sauce has the power to change the entire character of a dessert.",
-					"Adding a garnish can go a long way to improving a desserts appearance and its perceived value. When it comes to dessert toppings and garnishes, the possibilities are endless.",
-					"Powdered sugar, chocolate curls, a dollop of whipped cream or a sprig of mint can add value to a piece of cake or pie. Piping whipped cream rosettes can give the dessert an even more polished and expensive appearance. During the holidays, capture popular flavors by adding peppermint sticks or gingerbread.",
-					"Nuts are fantastic for adding texture and flavor to ice cream or cakes. But why stop there? Just by making a homemade caramel, you can offer customers candied peanuts, pecans, or pistachios. Or go a step further and incorporate popular bourbon or maple flavors with pecans to create a homemade brittle that can be served on the side or crushed and sprinkled on top.",
-					"Of course fresh fruit is always a colorful and healthful way to add brightness to the decadence of rich dessert flavors."
+					"Here are some tips from Vince Veneziano, Senior Vice President of Corporate Accounts at Lyons Magnus, and the Cheesecake Factory’s Tony Gressak, Vice President of Distributor Sales, and Alan Lee, executive pastry chef and Senior Manager of Bakery Research and Development, for turning desserts into sweet profits this holiday season."
 				],
 				"ul": [],
 				"ol": [],
@@ -13036,22 +13030,56 @@
 						"image_class": "wp-image-895",
 						"href": null,
 						"position": 3
-					},
+					}
+				],
+				"carousels": [],
+				"quotes": [],
+				"videos": [],
+				"cta": {},
+				"action": {}
+			},
+			{
+				"heading": "Get Saucy",
+				"content": [
+					"In addition to serving classic holiday flavors, there’s ample opportunity to elevate premade desserts  and sales  by experimenting with sauces. A premade dessert serves as a blank canvas upon which operators can unleash some very profitable creativity.",
+					"Take a classic slice of cheesecake. It’s a simple delight. On the plate all by itself, however, it can look a little underwhelming. Simply adding a drizzle of strawberry, rich chocolate or salted caramel sauce can transform both the flavor and the visual appeal of the dessert. Whether pooled underneath, drizzled in a pattern on top, or served in a ramekin on the side, a sauce has the power to change the entire character of a dessert."
+				],
+				"ul": [],
+				"ol": [],
+				"images": [
 					{
 						"image": "https://foodie.sysco.com/wp-content/uploads/2019/04/DishDesserts_4.jpg",
 						"caption": null,
 						"image_alt": "Sysco Imperial Meyer Lemon Lava Cake",
 						"image_class": "wp-image-901",
 						"href": null,
-						"position": 5
-					},
+						"position": 3
+					}
+				],
+				"carousels": [],
+				"quotes": [],
+				"videos": [],
+				"cta": {},
+				"action": {}
+			},
+			{
+				"heading": "Harness The Garnish",
+				"content": [
+					"Adding a garnish can go a long way to improving a desserts appearance and its perceived value. When it comes to dessert toppings and garnishes, the possibilities are endless.",
+					"Powdered sugar, chocolate curls, a dollop of whipped cream or a sprig of mint can add value to a piece of cake or pie. Piping whipped cream rosettes can give the dessert an even more polished and expensive appearance. During the holidays, capture popular flavors by adding peppermint sticks or gingerbread.",
+					"Nuts are fantastic for adding texture and flavor to ice cream or cakes. But why stop there? Just by making a homemade caramel, you can offer customers candied peanuts, pecans, or pistachios. Or go a step further and incorporate popular bourbon or maple flavors with pecans to create a homemade brittle that can be served on the side or crushed and sprinkled on top.",
+					"Of course fresh fruit is always a colorful and healthful way to add brightness to the decadence of rich dessert flavors."
+				],
+				"ul": [],
+				"ol": [],
+				"images": [
 					{
 						"image": "https://foodie.sysco.com/wp-content/uploads/2019/04/DishDesserts_5.jpg",
 						"caption": null,
 						"image_alt": null,
 						"image_class": "wp-image-907",
 						"href": null,
-						"position": 9
+						"position": 5
 					}
 				],
 				"carousels": [],
@@ -16720,7 +16748,7 @@
 				"action": {}
 			},
 			{
-				"heading": null,
+				"heading": "Here are the top 10 reasons plant-forward options are increasing in popularity.",
 				"content": [],
 				"ul": [],
 				"ol": [
@@ -16757,7 +16785,7 @@
 					"body": "\nMaking the choice simple.\n",
 					"image": null,
 					"alt": null,
-					"position": 2
+					"position": 1
 				},
 				"action": {}
 			}

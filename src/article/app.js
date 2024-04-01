@@ -1,7 +1,7 @@
 import pino from "pino";
 import axios from 'axios';
 import * as fs from "fs";
-import {HEADERS,PAGE_SIZE} from "../constants.js"
+import {HEADERS,PAGE_SIZE,ARTICLE_REFERENCE_CONTENT_TYPES,ARTICLE_META_DATA} from "../constants.js"
 import path from "path";
 
 const logger = pino({
@@ -40,7 +40,7 @@ export const insertBulkDataIntoContentStack = async (requests) => {
             setTimeout(makeRequest, rateLimit);
         } else {
             logger.info("Data inserting is completed");
-            fs.writeFileSync('dommy.json', JSON.stringify(failedEntries),"utf-8");
+            //fs.writeFileSync('dommy.json', JSON.stringify(failedEntries),"utf-8");
         }
     };
     makeRequest();
@@ -79,7 +79,7 @@ export const getAllEntriesFromContentTypes = async (callback) => {
         let perPage = PAGE_SIZE;
         let totalPages = null;
         let contentType = {
-            name: 'related_post',
+            name: 'relatedPost',
             uid: 'related_post'
         };
         try {
@@ -121,7 +121,7 @@ export const getAllEntriesFromContentTypes = async (callback) => {
     queryData();
 }
 const retriveCategory = (data)=>{
-    const referenceCategory = cache["category"].find((category) => category.name === data)
+    const referenceCategory = cache[ARTICLE_META_DATA.CATEGORY].find((category) => category.name === data)
     if (referenceCategory !== undefined) {
         return {
             uid: referenceCategory.uid,
@@ -129,7 +129,16 @@ const retriveCategory = (data)=>{
         }
     }
 }
-
+const retriveSubCategory = (data)=>{
+    console.log(cache[ARTICLE_META_DATA.SUB_CATEGORY])
+    const referenceCategory = cache[ARTICLE_META_DATA.SUB_CATEGORY].find((category) => category.name === data)
+    if (referenceCategory !== undefined) {
+        return {
+            uid: referenceCategory.uid,
+            _content_type_uid: referenceCategory.contentTypeUid
+        }
+    }
+}
 const retriveSlug = (imageUrl)=>{
     return path.basename(path.basename(imageUrl), path.extname(imageUrl));
 }
@@ -141,7 +150,7 @@ const getImage = (wpid,imageObj,articleUrl,imageUrl)=>{
     const slug = retriveSlug(articleUrl);
     const retiveImageName = retriveSlug(imageUrl);
     const extension = path.basename(imageUrl).match(/[0-9a-z]+$/i);
-    let imageName = `${wpid}_${slug}_${retiveImageName}.${extension}`;
+    let imageName = `${wpid}_${retiveImageName}.${extension}`;
     if(wpid === "26241"){
         if(names.includes(retiveImageName)){
             imageName = `${wpid}_${retiveImageName}.${extension}`;
@@ -202,12 +211,19 @@ const prepareRelatedStory = (article,otmmImages)=>{
 
 export const publishArticleData = async () => {
     logger.info("Start article data inserting");
-    const otmmImages = JSON.parse(fs.readFileSync('images_otmm_article.json', 'utf8'));
-    
+    //const otmmImages = JSON.parse(fs.readFileSync('images_otmm_article.json', 'utf8')); //for dev 
+    const otmmImages = JSON.parse(fs.readFileSync('article_prod_8-3-24_otmm.json', 'utf8')); //for dev 
+    //const otmmImages = JSON.parse(fs.readFileSync('article_prod_otmm.json', 'utf8')); //for prod
     const requests = [];
-    const articles = JSON.parse(fs.readFileSync('article.json', 'utf8'));
-    
+    const articles = JSON.parse(fs.readFileSync('newArticle-8-3-24.json', 'utf8'));
+    //const articles = JSON.parse(fs.readFileSync('dommy.json', 'utf8'));
+    console.log(cache)
+    let i=0;
+    const response = [];
     for (const article of articles) {
+        // if (i==1)
+        //     break;
+        // i=i+1;
         const imageObj = otmmImages.filter(image => image.wpid === article.wpid);
         //console.log(imageObj)
         const payload = {
@@ -217,18 +233,24 @@ export const publishArticleData = async () => {
                 wpid: article?.wpid.toString(), // only for test stack
                 status: 'published',
                 slogan: article?.slogan,
-                category: [retriveCategory(article.category)],
-                sub_category: [retriveCategory(article.sub_category)],
+                //categories: [retriveCategory(article.category)],
+                //sub_categories: [retriveSubCategory(article.sub_category)],
+                categories: [],
+                sub_categories: [],
                 article_type:"newArticle",
                 hero_image: getImage(article?.wpid,imageObj,article.link,article.hero_image),
                 article_content: prepareArticleContent(article,imageObj),
-                related_post: prepareRelatedStory(article,imageObj),
-                created_gmt: dateChange(article.created_gmt),
-                modified_gmt: dateChange(article.modified_gmt),
-                link:article.link
+                //related_post: prepareRelatedStory(article,imageObj),
+                //created_gmt: dateChange(article.created_gmt),
+                //modified_gmt: dateChange(article.modified_gmt),
+                created_gmt: article.created_gmt,
+                modified_gmt: article.modified_gmt,
+                link:article.link,
+                //tags:article.tags
             }
         }
-        //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");
+        //response.push(payload);
+        //fs.writeFileSync('dommy1.json', JSON.stringify(payload),"utf-8");
         const request = {
             url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_UID}/entries?locale=${process.env.LOCALE_CODE}`,
             method: 'post',
@@ -239,19 +261,16 @@ export const publishArticleData = async () => {
         }
         requests.push(request);
     }
+    //fs.writeFileSync('dommy.json', JSON.stringify(response),"utf-8");
     //fs.writeFileSync('dommy.json', JSON.stringify(requests),"utf-8");
     //fs.writeFile('dommy.json', JSON.stringify(data), "utf-8"
     insertBulkDataIntoContentStack(requests);
 }
 
-//getAllEntriesFromContentTypes(publishArticleData);
-//publishArticleData();
-//insertCommonData('article-attributes','category_foodie');
-
 export const publishEdgeSolutionsData = async () => {
     logger.info("Start article data inserting");
-    const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8'));
-    
+    //const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8')); //for dev
+    const otmmImages = JSON.parse(fs.readFileSync('cutting_edge_prod_otmm.json', 'utf8'));  //for prod
     const requests = [];
     const articles = JSON.parse(fs.readFileSync('cutting-edge.json', 'utf8'));
 
@@ -315,6 +334,14 @@ const prepareFeatureProducts = (products,imageObj)=>{
     }
     return products;
 }
+const prepareFeatureProductsHomePage = (products,imageObj)=>{ 
+    for(let product of products.related_products){
+        const name = product.image.substring(START.length,product.image.indexOf(END));
+        const extension = path.basename(product.image).match(/[0-9a-z]+$/i);
+        product['image'] = getFeatureImage(`feature_product_image_${name}.${extension}`,imageObj);
+    }
+    return products;
+}
 
 const getFeatureImage = (name,imageObj)=>{
     const image = imageObj.filter(image=>image.name === name)[0];
@@ -326,18 +353,12 @@ const getFeatureImage = (name,imageObj)=>{
         mime_type: image === undefined ? null : image?.meme_type
     }]
 }
-// const images = JSON.parse(fs.readFileSync('cutting-edge.json', 'utf8'));
-// console.log(images.length)
-// const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8'));
-// const imageObj = otmmImages.filter(image => image.wpid === '32817' || image.wpid === 'feature');
-// console.log(imageObj);
-// console.log(imageObj.length);
 
-//getAllEntriesFromContentTypes(publishEdgeSolutionsData);
 
 export const publishEdgeSolutionsHomePageData = async () => {
     logger.info("Start article data inserting");
-    const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8'));
+    //const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8')); //for dev
+    const otmmImages = JSON.parse(fs.readFileSync('cutting_edge_prod_otmm.json', 'utf8'));  //for prod
 
     const requests = [];
     const article = JSON.parse(fs.readFileSync('cutting_edge_home.json', 'utf8'));
@@ -359,15 +380,15 @@ export const publishEdgeSolutionsHomePageData = async () => {
             bill_board: prepareBillBoard(article, imageObj),
             edge_solutions: prepareEdgeSolutions(article, imageObj),
             content_body: prepareContentBody(article, imageObj),
-            products: prepareFeatureProducts(article.products.related_products, imageObj),
+            products: prepareFeatureProductsHomePage(article.products, imageObj),
             related_recipies: prepareEdgeRecipes(article, imageObj),
-            created_gmt: article.created_gmt,
-            modified_gmt: article.modified_gmt,
+            created_gmt: dateChange(article.created_gmt),
+            modified_gmt: dateChange(article.modified_gmt),
             page_link: article.link_page,
             link: article.link
         }
     }
-    //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");
+    fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");
     const request = {
         url: `${process.env.CREATE_ENTRY_URL}${process.env.CUTTING_EDGE_HOME_PAGE_UID}/entries?locale=${process.env.LOCALE_CODE}`,
         method: 'post',
@@ -411,28 +432,257 @@ const prepareEdgeRecipes = (article,imageObj)=>{
 export const updateRelatedPostEntry = async () => {
     logger.info("Start article data inserting");
     const requests = [];
-    const articles = JSON.parse(fs.readFileSync('related_post.json', 'utf8'));
+    const articles = JSON.parse(fs.readFileSync('dommy1.json', 'utf8'));
+    const articles1 = JSON.parse(fs.readFileSync('newArticle-15-2-24.json', 'utf8'));
     //const otmmImages = JSON.parse(fs.readFileSync('images_otmm_article.json', 'utf8'));
+    let count = 0;
+    //console.log(cache)
     for (const article of articles) {
+        const art = articles1.filter(image => image.wpid === article.wpid)[0];
+        console.log(art)
         //const imageObj = otmmImages.filter(image => image.wpid === article.wpid);
+        // if(count == 1)
+        //     break;
+        //break;
+        //count = count + 1;
         const payload = {
             entry: {
-                related_posts: article?.related_post.filter((data)=>data.uid.length>0).map((item) => {
-                    let referenceDietaryNeeds = cache["related_post"].find((dietaryItem) => dietaryItem.name === item.title);
-                    console.log(referenceDietaryNeeds)
-                    if (referenceDietaryNeeds !== undefined) {
-                      return {
-                        uid: referenceDietaryNeeds.uid,
-                        _content_type_uid: referenceDietaryNeeds.contentTypeUid
-                      }
-                    }
-                  })
+                related_posts: art?.related_post.filter((data) => data!==null )
+                    .map((item) => {
+                        let referenceDietaryNeeds = cache[ARTICLE_META_DATA.RELATED_POST].find((relatedPost) => relatedPost.name.trim() === item.title.trim());
+                        if (referenceDietaryNeeds !== undefined) {
+                            return {
+                                uid: referenceDietaryNeeds.uid,
+                                _content_type_uid: referenceDietaryNeeds.contentTypeUid
+                            }
+                        }
+                    })
             }
         }
         //console.log(payload)
         //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");//bltd7886249a3eeeaf8  bltd7886249a3eeeaf8//real
         const request = {
-            url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_DEMO_UID}/entries/${article.uid}`,
+            url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_UID}/entries/${article.uid}`,
+            method: 'put',
+            headers: {
+                ...HEADERS,
+            },
+            data: JSON.stringify(payload)
+        }
+        requests.push(request);
+    }
+    ///fs.writeFileSync('dommy.json', JSON.stringify(requests),"utf-8");
+    //fs.writeFile('dommy.json', JSON.stringify(requests), "utf-8");
+    insertBulkDataIntoContentStack(requests);
+}
+export const uploadRelatedData = async () => {
+    logger.info("Start article data inserting");
+    const requests = [];
+    const articles = JSON.parse(fs.readFileSync('newRelatedPost_prod-15-2-2024.json', 'utf8'));
+    const otmmImages = JSON.parse(fs.readFileSync('article_prod_15-2-24_otmm.json', 'utf8')); //for dev 
+
+    //const articles = JSON.parse(fs.readFileSync('newArticle-15-2-24.json', 'utf8'));
+    let count = 0;
+    for (const article of articles) {
+        // if (count == 1)
+        //     break;
+        // count = 1 + count;
+        for (const post of article.related_post) {
+            if (post.uid.length > 0) {
+                const imageObj = otmmImages.filter(image => image.wpid === article.wpid);
+                //console.log(imageObj)
+                const payload = {
+                    entry: {
+                        href: post.href,
+                        title: post.title,
+                        image: getImage(article.wpid, imageObj, article.link, post.image),
+                        article_id: post.uid[0],
+                        article_type: "newArticle",
+                        content_type: "Article",
+                        //categories: post.categories,
+                        //sub_categories: post.sub_categories,
+                        categories: [],
+                        sub_categories: [],
+                    }
+                }
+                //console.log(payload)
+                //fs.writeFileSync('dommy1.json', JSON.stringify(payload), "utf-8");
+                const request = {
+                    url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_RELATED_POST_UID}/entries?locale=${process.env.LOCALE_CODE}`,
+                    method: 'post',
+                    headers: {
+                        ...HEADERS,
+                    },
+                    data: JSON.stringify(payload)
+                }
+                requests.push(request);
+                //}
+            }
+        }
+        
+        //insertBulkDataIntoContentStack(requests);
+        //fs.writeFileSync('dommy1.json', JSON.stringify(requests), "utf-8");
+    }
+    console.log(JSON.stringify(requests.length))
+    insertBulkDataIntoContentStack(requests);
+}
+
+export const uploadRelatedRecipe = async () => {
+    logger.info("Start article data inserting");
+    const requests = [];
+    const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8'));
+
+    const articles = JSON.parse(fs.readFileSync('related_recipe.json', 'utf8'));
+    let count =0;
+    for (const article of articles) {
+        const imageObj = otmmImages.filter(image => image.wpid === article.wpid);
+        //  if(count ==1)
+        //       break;
+        //   count=1+count;
+        if(article.recipe_id.length>0){
+            //console.log(imageObj)
+            //console.log(article);
+            const payload = {
+                entry: {
+                    title: article.name,
+                    image: getImage(article.wpid,imageObj,article.link,article.image),
+                    href: article.href,
+                    recipe_id : article.recipe_id
+                }
+            }
+            console.log(payload);
+            const request = {
+                url: `${process.env.CREATE_ENTRY_URL}${process.env.RELATED_RECIPE_UID}/entries?locale=${process.env.LOCALE_CODE}`,
+                method: 'post',
+                headers: {
+                    ...HEADERS,
+                },
+                data: JSON.stringify(payload)
+            }
+            requests.push(request);
+        }
+
+    }
+    //console.log(JSON.stringify(requests))
+    insertBulkDataIntoContentStack(requests);
+}
+
+export const uploadRelatedProduct = async () => {
+    logger.info("Start article data inserting");
+    const requests = [];
+    const otmmImages = JSON.parse(fs.readFileSync('images_otmm_edge.json', 'utf8'));
+
+    const articles = JSON.parse(fs.readFileSync('related_products.json', 'utf8'));
+    let count =0;
+    for (const article of articles) {
+        const imageObj = otmmImages.filter(image => image.wpid === 'feature');
+        //  if(count ==1)
+        //       break;
+        //   count=1+count;
+        const name = article.image.substring(START.length,article.image.indexOf(END));
+        const extension = path.basename(article.image).match(/[0-9a-z]+$/i);
+        const payload = {
+            entry: {
+                title: article.title,
+                image: getFeatureImage(`feature_product_image_${name}.${extension}`,imageObj),
+            }
+        }
+        
+        const request = {
+            url: `${process.env.CREATE_ENTRY_URL}${process.env.RELATED_PRODUCT_UID}/entries?locale=${process.env.LOCALE_CODE}`,
+            method: 'post',
+            headers: {
+                ...HEADERS,
+            },
+            data: JSON.stringify(payload)
+        }
+        requests.push(request);
+
+    }
+    //console.log(JSON.stringify(requests))
+    insertBulkDataIntoContentStack(requests);
+}
+
+export const getAllArticleEntriesFromContentTypes = async (callback) => {
+    let i = 0;
+    const queryData = async () => {
+        let responseData = [];
+        let page = 1;
+        let perPage = PAGE_SIZE;
+        let totalPages = null;
+        let contentType = ARTICLE_REFERENCE_CONTENT_TYPES[i];
+        try {
+            while (totalPages === null || page <= totalPages) {
+                let skip = ((page - 1) * perPage);
+                const response = await axios({
+                    url: `${process.env.GET_ALL_ENTRIES_URL}${contentType.uid}/entries?include_count=true&skip=${skip}&limit=${perPage}`,
+                    method: 'get',
+                    headers: {
+                        ...HEADERS,
+                    }
+                });
+                if (response.status === 200) {
+                    responseData = [...responseData, ...response.data.entries];
+                    totalPages = Math.ceil(response.data['count'] / perPage);
+                    console.log(response.data['count'])
+                    console.log(totalPages)
+                    page++;
+                } else {
+                    logger.child({ errorObj: e }).error("Fetching entries is failed");
+                    break;
+                }
+            }
+            cache[contentType.name] =
+                responseData.map((item) => (
+                    {
+                        name: item.title,
+                        uid: item.uid,
+                        contentTypeUid: contentType.uid
+                    }
+                ));
+            i++
+            if (i < ARTICLE_REFERENCE_CONTENT_TYPES.length) {
+                setTimeout(queryData, rateLimit);
+            } else {
+                // logger.info(cache);
+                callback();
+                //fs.writeFileSync('dommy.json', JSON.stringify(cache),"utf-8");
+            }            
+        } catch (e) {
+            console.log(e)
+            logger.child({ errorObj: e }).error("Fetching entries is failed");
+        }
+    }
+    queryData();
+}
+
+export const updateHeroImagesEntry = async () => {
+    logger.info("Start article data inserting");
+    const requests = [];
+    const articles = JSON.parse(fs.readFileSync('missing_images_dev.json', 'utf8'));
+    const otmmImages = JSON.parse(fs.readFileSync('article_dev_missing_otmm.json', 'utf8'));
+    let count =0;
+    for (const image of otmmImages) {
+        const article = articles.filter(article => article.wpid === image.wpid);
+        // if(count == 1)
+        //     break;
+        // count = count + 1;
+        // console.log(article)
+        const payload = {
+            entry: {
+                hero_image: [{
+                    url: image === undefined ? null : image?.url,
+                    id: image === undefined ? null : image?.id,
+                    name: image === undefined ? null : image?.name,
+                    content_type: image === undefined ? null : image?.content_type,
+                    mime_type: image === undefined ? null : image?.mime_type
+                }]
+            }
+        }
+        //console.log(payload)
+        //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");//bltd7886249a3eeeaf8  bltd7886249a3eeeaf8//real
+        const request = {
+            url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_UID}/entries/${article[0].uid}`,
             method: 'put',
             headers: {
                 ...HEADERS,
@@ -445,45 +695,125 @@ export const updateRelatedPostEntry = async () => {
     //fs.writeFile('dommy.json', JSON.stringify(data), "utf-8"
     insertBulkDataIntoContentStack(requests);
 }
-export const uploadRelatedData = async () => {
+
+export const updateCategorySubAndTagEntry = async () => {
     logger.info("Start article data inserting");
     const requests = [];
-    const articles = JSON.parse(fs.readFileSync('related_post.json', 'utf8'));
+    const articleTags = JSON.parse(fs.readFileSync('newCategoryAndSubCategoryProd.json', 'utf8'));
+    const articles = JSON.parse(fs.readFileSync('demo_article.json', 'utf8'));
     let count =0;
+    console.log(cache)
     for (const article of articles) {
-        // if(count ==1)
-        //      break;
-        //  count=1+count;
-        for (const post of article.related_post) {
-            if(post.uid.length>0){
-                const payload = {
-                    entry: {
-                        href: post.href,
-                        title: post.title,
-                        image: post.image,
-                        category:post.category,
-                        article_id: post.uid[0],
-                        article_type:"newArticle",
-                    }
+        // if(count == 1)
+        //     break;
+        // count = count + 1;
+        // console.log(article)
+        let tagData = articleTags.filter((data => data.wpid1 === article.wpid))[0]
+        if(article.uid !== null){
+            const payload = {
+                entry: {
+                    categories: article.category,
+                    sub_categories: article.sub_category,
+                    tags: tagData === undefined ? null : tagData?.tags,
                 }
-                //console.log(payload)
-                const request = {
-                    url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_RELATED_POST_UID}/entries?locale=${process.env.LOCALE_CODE}`,
-                    method: 'post',
-                    headers: {
-                        ...HEADERS,
-                    },
-                    data: JSON.stringify(payload)
-                }
-                requests.push(request);
             }
+            //console.log(payload)
+            //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");//bltd7886249a3eeeaf8  bltd7886249a3eeeaf8//real
+            const request = {
+                url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_UID}/entries/${article.uid}`,
+                method: 'put',
+                headers: {
+                    ...HEADERS,
+                },
+                data: JSON.stringify(payload)
+            }
+            requests.push(request);
         }
     }
-    //console.log(JSON.stringify(requests))
+    //fs.writeFileSync('dommy.json', JSON.stringify(requests),"utf-8");
+    //fs.writeFile('dommy.json', JSON.stringify(data), "utf-8"
     insertBulkDataIntoContentStack(requests);
 }
-uploadRelatedData();
-//getAllEntriesFromContentTypes(updateEntry);
-//getAllEntriesFromContentTypes(publishArticleData);
-//getAllEntriesFromContentTypes(publishEdgeSolutionsData);
-//getAllEntriesFromContentTypes(publishEdgeSolutionsHomePageData);
+export const updateArticleData = async () => {
+    logger.info("Start article data inserting");
+    //const otmmImages = JSON.parse(fs.readFileSync('images_otmm_article.json', 'utf8')); //for dev 
+    const otmmImages = JSON.parse(fs.readFileSync('article_prod_otmm.json', 'utf8')); //for prod
+    const requests = [];
+    const articles = JSON.parse(fs.readFileSync('article1.json', 'utf8'));
+    for (const article of articles) {
+        const imageObj = otmmImages.filter(image => image.wpid === article.wpid);
+        //console.log(imageObj)
+        const payload = {
+            entry: {
+                article_content: prepareArticleContent(article,imageObj),
+            }
+        }
+        //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");
+        const request = {
+            url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_UID}/entries/blt6c13dd2d7ceccb80`,
+            method: 'put',
+            headers: {
+                ...HEADERS,
+            },
+            data: JSON.stringify(payload)
+        }
+        requests.push(request);
+    }
+    //fs.writeFileSync('dommy.json', JSON.stringify(requests),"utf-8");
+    //fs.writeFile('dommy.json', JSON.stringify(data), "utf-8"
+    insertBulkDataIntoContentStack(requests);
+}
+
+export const updateCategorySubInRelatedPost = async () => {
+    logger.info("Start article data inserting");
+    const requests = [];
+    const articles = JSON.parse(fs.readFileSync('newCatProd.json', 'utf8'));
+    let count =0;
+    console.log(cache)
+    for (const article of articles) {
+        // if(count == 1)
+        //     break;
+        // count = count + 1;
+        // console.log(article)
+        //if(article.relatedId !== null){
+            const payload = {
+                entry: {
+                    categories: [retriveCategory(article.category)],
+                    sub_categories: [retriveSubCategory(article.sub_category)],
+                }
+            }
+            //console.log(payload)
+            //fs.writeFileSync('dommy.json', JSON.stringify(payload),"utf-8");//bltd7886249a3eeeaf8  bltd7886249a3eeeaf8//real
+            const request = {
+                url: `${process.env.CREATE_ENTRY_URL}${process.env.ARTICLE_RELATED_POST_UID}/entries/${article.uid}`,
+                method: 'put',
+                headers: {
+                    ...HEADERS,
+                },
+                data: JSON.stringify(payload)
+            }
+            requests.push(request);
+        //}
+    }
+    //fs.writeFileSync('dommy.json', JSON.stringify(requests),"utf-8");
+    //fs.writeFile('dommy.json', JSON.stringify(data), "utf-8"
+    insertBulkDataIntoContentStack(requests);
+}
+//uploadRelatedProduct();
+//uploadRelatedRecipe();
+//uploadRelatedData(); //t
+//getAllArticleEntriesFromContentTypes(uploadRelatedData);
+//getAllEntriesFromContentTypes(updateRelatedPostEntry);
+getAllArticleEntriesFromContentTypes(publishArticleData);
+//getAllArticleEntriesFromContentTypes(publishEdgeSolutionsData);
+//getAllArticleEntriesFromContentTypes(publishEdgeSolutionsHomePageData);
+
+//getAllArticleEntriesFromContentTypes();
+
+//insertCommonData('article-attributes','category_foodie')
+//getAllArticleEntriesFromContentTypes(updateRelatedPostEntry); 
+//updateHeroImagesEntry();
+//getAllArticleEntriesFromContentTypes(updateCategorySubAndTagEntry);
+//updateArticleData();
+//getAllArticleEntriesFromContentTypes(updateCategorySubInRelatedPost);
+//updateCategorySubAndTagEntry()

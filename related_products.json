@@ -1,0 +1,107 @@
+[
+    {
+        "wpid": "32795",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/mezete-hummus/",
+        "image": "https://image.sysco.com/image-server/product/image/7231355/web/2.jpg",
+        "title": "Hummus Classic Authentic",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32795",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/mezete-hummus/",
+        "image": "https://image.sysco.com/image-server/product/image/7231361/web/2.jpg",
+        "title": "Hummus Red Pepper",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32795",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/mezete-hummus/",
+        "image": "https://image.sysco.com/image-server/product/image/7231364/web/2.jpg",
+        "title": "Original Hummus Snack Pack",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32795",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/mezete-hummus/",
+        "image": "https://image.sysco.com/image-server/product/image/7231367/web/2.jpg",
+        "title": "Roasted Red Pepper Hummus Snack Pack",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32811",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/casa-solana-classic-beef-birria/",
+        "image": "https://image.sysco.com/image-server/product/image/7230932/web/2.jpg",
+        "title": "Beef Birria Cooked Frozen",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32817",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/greco-and-sons-beef-bacon-3/",
+        "image": "https://image.sysco.com/image-server/product/image/7229414/web/2.jpg",
+        "title": "Beef Bacon Strips Halal",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32789",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/sysco-freshpoint-natural-fresh-ready-to-eat-beans/",
+        "image": "https://image.sysco.com/image-server/product/image/7089040/web/3.jpg",
+        "title": "Bean Black Fresh RTE",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32789",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/sysco-freshpoint-natural-fresh-ready-to-eat-beans/",
+        "image": "https://image.sysco.com/image-server/product/image/7089051/web/3.jpg",
+        "title": "Bean Garbanzo Fresh RTE",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32789",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/sysco-freshpoint-natural-fresh-ready-to-eat-beans/",
+        "image": "https://image.sysco.com/image-server/product/image/7088863/web/3.jpg",
+        "title": "Pinto Beans RTE",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32814",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/greco-and-sons-beef-pepperoni/",
+        "image": "https://image.sysco.com/image-server/product/image/7229441/web/2.jpg",
+        "title": "Beef Sliced Pepperoni Halal",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32799",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/bakers-source-imperial-honey-flavor-baked-biscuits/",
+        "image": "https://image.sysco.com/image-server/product/image/7224091/web/2.jpg",
+        "title": "Biscuit Baked Honey Flavored",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32808",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/sysco-classic-turkey-sausage-scramble/",
+        "image": "https://image.sysco.com/image-server/product/image/7225473/web/2.jpg",
+        "title": "Burrito Egg / Cheese Turkey Sausage Filling",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32802",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/casa-solana-classic-chorizo-potato-blend/",
+        "image": "https://image.sysco.com/image-server/product/image/7225872/web/2.jpg",
+        "title": "Burrito Potato Chorizo Filling",
+        "type": "edge_solution"
+    },
+    {
+        "wpid": "32693",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/",
+        "image": "https://image.sysco.com/image-server/product/image/7230932/web/2.jpg",
+        "title": "Beef Birria Cooked Frozen",
+        "type": "edge_solution_home"
+    },
+    {
+        "wpid": "32693",
+        "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/",
+        "image": "https://image.sysco.com/image-server/product/image/7189102/web/1.jpg",
+        "title": "Biscuit Sausage Egg & Cheese Stuffed",
+        "type": "edge_solution_home"
+    }
+]

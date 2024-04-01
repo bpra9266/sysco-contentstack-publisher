@@ -1,64 +1,137 @@
 [{
     "category": "Tips",
-    "wpid": "32795",
-    "page_header": {
-        "href": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/",
-        "back_message": " Back to New Spring 2023 Cutting Edge Solutions ",
-        "image": "https://foodie.sysco.com/wp-content/uploads/2023/03/MicrosoftTeams-image-184-scaled.jpg",
-        "title": "Mezete Hummus",
-        "pacecore": "Shelf-stable with an authentic Middle Eastern taste"
-    },
-    "content": {
-        "title": "Fresh. Innovative. Efficient. ",
-        "message": "Pioneered after two decades of intensive research and development, this product’s unique Ultra-High Temperature sterilization allows for this hummus to be stored on a shelf, not in a refrigerator, saving valuable cooler space. ",
-        "video": {
-            "src": "https://www.youtube.com/embed/gx7DLXBcwDg?feature=oembed&enablejsapi=1&origin=https%3A%2F%2Ffoodie.sysco.com",
-            "title": "Sysco Cutting Edge Solutions: Mezete Hummus"
-        }
-    },
-    "section_header": {
-        "title": "Why We Love This",
-        "subtitle": "Learn more about this great product",
-        "li": [
-            "Shelf stable – no need to refrigerate before opening",
-            "100% natural ingredients",
-            "Made with 30% tahini content, 3x that of leading brands, for a rich, nutty flavor with a velvety smooth and creamy texture",
-            "This unique UHT sterilization process allows for this hummus to be made with no preservatives, for a fresh, authentic Middle Eastern taste",
-            "Available in two flavors, Classic and Roasted Red Pepper, and packed in 2.2-pound pouches or on-the-go packs for grab-and-go convenience"
-        ]
-    },
-    "recipes": {
-        "title": "Recipes",
-        "card": [
-            {
-                "src": "https://foodie.sysco.com/recipes/mediterranean-cobb-salad/",
-                "image": "https://foodie.sysco.com/wp-content/uploads/2023/03/Mediterranean-Cobb-Salad.png",
-                "text": "Mediterranean Cobb Salad"
-            },
-            {
-                "src": "https://foodie.sysco.com/recipes/hummus-chicken-masala/",
-                "image": "https://foodie.sysco.com/wp-content/uploads/2023/03/Hummus-Chicken-Tikka-Masala.jpg",
-                "text": "Hummus Chicken Masala"
-            }
-        ]
-    },
-    "feature_products": [
+    "wpid": "306",
+    "created_gmt": "2018-04-09T21:09:42:00Z",
+    "modified_gmt": "2019-12-12T23:03:59:00Z",
+    "name": "The Dish on Plating Desserts",
+    "sub_category": "Tips & Trends",
+    "slogan": "Upsell your sweets—and make them go viral on Instagram—by putting extra thought and effort into presentation.",
+    "hero_image": null,
+    "article_content": [
         {
-            "image": "https://image.sysco.com/image-server/product/image/7231355/web/2.jpg",
-            "message": "Hummus Classic Authentic"
+            "heading": null,
+            "content": [
+                "During the holidays, shoppers may be frantically scrambling to pick up those final items on their gift lists, but they’re still making time to dine out. Since customers are willing to pay more for an exceptional dining experience not to mention the fact that so many flavors associated with the holidays are sweet (think eggnog, peppermint, and pumpkin everything)  the holidays are an excellent time to drive dessert sales.",
+                "Here are some tips from Vince Veneziano, Senior Vice President of Corporate Accounts at Lyons Magnus, and the Cheesecake Factory’s Tony Gressak, Vice President of Distributor Sales, and Alan Lee, executive pastry chef and Senior Manager of Bakery Research and Development, for turning desserts into sweet profits this holiday season."
+            ],
+            "ul": [],
+            "ol": [],
+            "images": [
+                {
+                    "image": "https://foodie.sysco.com/wp-content/uploads/2019/04/DishDesserts_marquee.jpg",
+                    "caption": null,
+                    "image_alt": null,
+                    "image_class": "wp-image-876",
+                    "href": null,
+                    "position": 0
+                },
+                {
+                    "image": "https://foodie.sysco.com/wp-content/uploads/2019/04/DishDesserts_3.jpg",
+                    "caption": null,
+                    "image_alt": "Dessert Dippings",
+                    "image_class": "wp-image-895",
+                    "href": null,
+                    "position": 3
+                }
+            ],
+            "carousels": [],
+            "quotes": [],
+            "videos": [],
+            "cta": {},
+            "action": {}
         },
         {
-            "image": "https://image.sysco.com/image-server/product/image/7231361/web/2.jpg",
-            "message": "Hummus Red Pepper"
+            "heading": "Get Saucy",
+            "content": [
+                "In addition to serving classic holiday flavors, there’s ample opportunity to elevate premade desserts  and sales  by experimenting with sauces. A premade dessert serves as a blank canvas upon which operators can unleash some very profitable creativity.",
+                "Take a classic slice of cheesecake. It’s a simple delight. On the plate all by itself, however, it can look a little underwhelming. Simply adding a drizzle of strawberry, rich chocolate or salted caramel sauce can transform both the flavor and the visual appeal of the dessert. Whether pooled underneath, drizzled in a pattern on top, or served in a ramekin on the side, a sauce has the power to change the entire character of a dessert."
+            ],
+            "ul": [],
+            "ol": [],
+            "images": [
+                {
+                    "image": "https://foodie.sysco.com/wp-content/uploads/2019/04/DishDesserts_4.jpg",
+                    "caption": null,
+                    "image_alt": "Sysco Imperial Meyer Lemon Lava Cake",
+                    "image_class": "wp-image-901",
+                    "href": null,
+                    "position": 3
+                }
+            ],
+            "carousels": [],
+            "quotes": [],
+            "videos": [],
+            "cta": {},
+            "action": {}
         },
         {
-            "image": "https://image.sysco.com/image-server/product/image/7231364/web/2.jpg",
-            "message": "Original Hummus Snack Pack"
+            "heading": "Harness The Garnish",
+            "content": [
+                "Adding a garnish can go a long way to improving a desserts appearance and its perceived value. When it comes to dessert toppings and garnishes, the possibilities are endless.",
+                "Powdered sugar, chocolate curls, a dollop of whipped cream or a sprig of mint can add value to a piece of cake or pie. Piping whipped cream rosettes can give the dessert an even more polished and expensive appearance. During the holidays, capture popular flavors by adding peppermint sticks or gingerbread.",
+                "Nuts are fantastic for adding texture and flavor to ice cream or cakes. But why stop there? Just by making a homemade caramel, you can offer customers candied peanuts, pecans, or pistachios. Or go a step further and incorporate popular bourbon or maple flavors with pecans to create a homemade brittle that can be served on the side or crushed and sprinkled on top.",
+                "Of course fresh fruit is always a colorful and healthful way to add brightness to the decadence of rich dessert flavors."
+            ],
+            "ul": [],
+            "ol": [],
+            "images": [
+                {
+                    "image": "https://foodie.sysco.com/wp-content/uploads/2019/04/DishDesserts_5.jpg",
+                    "caption": null,
+                    "image_alt": null,
+                    "image_class": "wp-image-907",
+                    "href": null,
+                    "position": 5
+                }
+            ],
+            "carousels": [],
+            "quotes": [],
+            "videos": [],
+            "cta": {},
+            "action": {}
         },
         {
-            "image": "https://image.sysco.com/image-server/product/image/7231367/web/2.jpg",
-            "message": "Roasted Red Pepper Hummus Snack Pack"
+            "heading": "Play With Your Food",
+            "content": [
+                "Another way to increase profitability with plating is to experiment with the size and construction of the dessert itself. Larger, shareable desserts are extremely popular and, if plated creatively, can become an Instagram-worthy spectacle as they arrive at the table. But operators can also sometimes maximize opportunity by minimizing the size of the bite.",
+                "Instead of one large chocolate brownie, try serving brownie bites. Pair each one with a different complementary sauce, and garnish and place in a soup spoon for a sophisticated and easy-to-execute take on a dessert flight.",
+                "Another popular trend to take advantage of is putting new twists on old favorites, such as warm cookies and milk, or a do-it-yourself s’mores plate. Evoking a sense of nostalgia gives guests that experience they’re looking for."
+            ],
+            "ul": [],
+            "ol": [],
+            "images": [],
+            "carousels": [],
+            "quotes": [],
+            "videos": [],
+            "cta": {},
+            "action": {}
         }
     ],
-    "link": "https://foodie.sysco.com/new-spring-2023-cutting-edge-solutions/mezete-hummus/"
+    "related_post": [
+        {
+            "href": "https://foodie.sysco.com/tips-and-trends/achieving-kids-menus-success/",
+            "image": "https://foodie.sysco.com/wp-content/uploads/2020/06/Web-Image-600x800-1-1-300x245.jpg",
+            "title": "Achieving Kid’s Menus Success",
+            "category": "Tips & Trends"
+        },
+        {
+            "href": "https://foodie.sysco.com/tips-and-trends/gather-around-convenience/",
+            "image": "https://foodie.sysco.com/wp-content/uploads/2021/11/Untitled-design-35-300x245.png",
+            "title": "Gather Around Convenience",
+            "category": "Tips & Trends"
+        },
+        {
+            "href": "https://foodie.sysco.com/tips-and-trends/pickled-vegetables/",
+            "image": "https://foodie.sysco.com/wp-content/uploads/2019/06/pickled-fall-vegetables_1400x850-300x245.jpg",
+            "title": "Pickled Vegetables Spice Up Your Menu",
+            "category": "Tips & Trends"
+        },
+        {
+            "href": "https://foodie.sysco.com/tips-and-trends/small-bites/",
+            "image": "https://foodie.sysco.com/wp-content/uploads/2019/07/Small-Bites-Big-Flavors-Appetizers_1400x850-300x245.jpg",
+            "title": "Small Bites, Big Flavors",
+            "category": "Tips & Trends"
+        }
+    ],
+    "link": "https://foodie.sysco.com/tips-and-trends/dish-on-plating-desserts/"
 }]

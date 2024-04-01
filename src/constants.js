@@ -13,7 +13,11 @@ export const META_DATA = {
     TECHNIQUES: 'techniques',
     CATEGORY: 'categories'
 };
-
+export const ARTICLE_META_DATA = {
+    CATEGORY: 'category',
+    SUB_CATEGORY: 'subCategory',
+    RELATED_POST: 'relatedPost'
+};
 export const RECIPES = 'recipes';
 
 export const HEADERS = {
@@ -54,5 +58,19 @@ export const REFERENCE_CONTENT_TYPES = [
     },    
 ];
 
+export const ARTICLE_REFERENCE_CONTENT_TYPES = [
+    // {
+    //     name: ARTICLE_META_DATA.CATEGORY,
+    //     uid: process.env.TECHNIQUES_CONTENT_TYPE_UID
+    // },
+    // {
+    //     name: ARTICLE_META_DATA.SUB_CATEGORY,
+    //     uid: process.env.SUB_CATEGORY
+    // }
+    {
+        name: ARTICLE_META_DATA.RELATED_POST,
+        uid: process.env.ARTICLE_RELATED_POST_UID
+    }   
+];
 
 export const PAGE_SIZE = 100;

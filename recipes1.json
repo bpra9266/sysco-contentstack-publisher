@@ -1,0 +1,183 @@
+[
+    {
+        "metadata": {
+            "wpid": 36470,
+            "status": "publish",
+            "date_gmt": "2024-01-08T14:24:35Z",
+            "modified_gmt": "2024-01-08T21:56:22Z",
+            "slug": "mediterranean-cod-en-papiotte",
+            "link": "https://foodie.sysco.com/recipes/mediterranean-cod-en-papiotte/",
+            "categories": [],
+            "tags": [],
+            "recipe_types": [
+                {
+                    "wpid": 241,
+                    "value": "Main Dish"
+                }
+            ],
+            "main_ingredients": [
+                {
+                    "wpid": 270,
+                    "value": "Fish"
+                }
+            ],
+            "cuisines": [
+                {
+                    "wpid": 306,
+                    "value": "Mediterranean"
+                }
+            ],
+            "dish_types": [
+                {
+                    "wpid": 359,
+                    "value": "Fish Dish"
+                }
+            ],
+            "dietary_needs": [],
+            "techniques": [
+                {
+                    "wpid": 334,
+                    "value": "Bake"
+                }
+            ],
+            "feature_media": {
+                "thumbnail": "https://foodie.sysco.com/wp-content/uploads/2023/11/Sysco_Mediterranean_Cod_Papiotte-300x245.jpg",
+                "medium": "https://foodie.sysco.com/wp-content/uploads/2023/11/Sysco_Mediterranean_Cod_Papiotte-300x200.jpg",
+                "full": "https://foodie.sysco.com/wp-content/uploads/2023/11/Sysco_Mediterranean_Cod_Papiotte.jpg"
+            }
+        },
+        "data": {
+            "meal_types": [
+                "Main Dish"
+            ],
+            "title": "Mediterranean Cod en Papiotte",
+            "slogan": null,
+            "chef_name": "Chef Quientina Stewart",
+            "chef_location": "Sysco Charlotte",
+            "prep_time_duration": "30",
+            "prep_time_unit": "min",
+            "cook_time_duration": "16",
+            "cook_time_unit": "min",
+            "servings": "4",
+            "description": null,
+            "ingredients": [
+                {
+                    "title": null,
+                    "ingredient_items": [
+                        {
+                            "subtitle": null,
+                            "ingredient_list": [
+                                {
+                                    "ingredient": "1 Imperial Fresh medium fresh zucchini squash",
+                                    "supc_data": [
+                                        "6686828",
+                                        "1268960"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "24 ounces Portico Classic IQF Asian Atlantic cod loin",
+                                    "supc_data": [
+                                        "7036684"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "¼ ounces Sysco Classic coarse kosher salt flakes",
+                                    "supc_data": [
+                                        "6040760"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "Imperial/McCormick coarse ground black pepper to taste",
+                                    "supc_data": [
+                                        "5229273",
+                                        "5229281",
+                                        "5229356",
+                                        "5229331"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "2 each choice Imperial Fresh lemon",
+                                    "supc_data": [
+                                        "2252138",
+                                        "2445781",
+                                        "2252013",
+                                        "2252039",
+                                        "2252054",
+                                        "2252070",
+                                        "2252088",
+                                        "2252138"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "2 ounces shallot",
+                                    "supc_data": [
+                                        "1821529",
+                                        "2415859",
+                                        "9582545"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "1 ounce Imperial Fresh thyme sprigs",
+                                    "supc_data": [
+                                        "2005296"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "6 ounces Greek Kalamata olives in tin",
+                                    "supc_data": [
+                                        "7128076"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "6 ounces roasted red cherry tomatoes",
+                                    "supc_data": [
+                                        "7022200"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "10 ounces Sysco Imperial quartered artichokes",
+                                    "supc_data": [
+                                        "4003489",
+                                        "4093373"
+                                    ]
+                                },
+                                {
+                                    "ingredient": "8 fluid ounces Arrezzio Classic olive oil",
+                                    "supc_data": [
+                                        "4477941",
+                                        "4477962",
+                                        "4497301",
+                                        "5655618",
+                                        "5846714",
+                                        "5847029"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "instructions": [
+                {
+                    "title": null,
+                    "instruction_items": [
+                        {
+                            "subtitle": null,
+                            "instruction_list": [
+                                "Preheat the oven to 400°F. Fold a 12 x 16-inch sheet of parchment paper in half, then open it. Add several slices of zucchini in the center of one half, then top with a piece of cod. Season with salt and pepper.",
+                                "Top the cod with 2 to 3 lemon slices, ½ oz of shallot, a sprig of thyme, 5 olives, 5 tomatoes and 5 artichoke quarters (it's okay if these fall to the side). Drizzle a little olive oil on top.",
+                                "Fold the top half of the parchment paper over the bottom half, then tightly roll up the edges around the cod. Repeat this process with the other 3 pieces of cod.",
+                                "Place the 4 parchment packets on a baking sheet, place in the oven, and bake for 14 to 18 minutes (depending on thickness), or until the cod is opaque and flakes easily with a fork.",
+                                "Use a knife to pierce the center of each parchment packet, and open it before serving."
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "special_notes": [
+                "Ingredient availability varies by location*"
+            ],
+            "image_url": "https://foodie.sysco.com/wp-content/uploads/2023/11/Sysco_Mediterranean_Cod_Papiotte.jpg"
+        }
+    }
+]
